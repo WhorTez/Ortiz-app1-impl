@@ -15,13 +15,13 @@ public class ToDoListApplication extends javafx.application.Application {
     @Override
     public void start (Stage stage) throws Exception{
 
-        Parent root =
-                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("baseline.MainMenu.fxml")));
-        Scene scene = new Scene(root); // attaches scene graph to scene
-        stage.setTitle("ToDo Lists");
-        stage.setScene(scene); //Attaches scene to stage
-        stage.show(); //display the stage
-    }
+            Parent root =
+                    FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+            Scene scene = new Scene(root); // attaches scene graph to scene
+            stage.setTitle("What's up Doc?");
+            stage.setScene(scene); //Attaches scene to stage
+            stage.show(); //display the stage
+        }
 
     public static void main (String[]args){
         launch(args);
@@ -31,8 +31,6 @@ public class ToDoListApplication extends javafx.application.Application {
         //creates an empty taskManager
         // will only add TDL's with fields set to true
         // will return the created taskManager so it can be saved
-        //   return null;
-
         return null;
     }
 

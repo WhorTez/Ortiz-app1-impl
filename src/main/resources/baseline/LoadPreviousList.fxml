@@ -8,19 +8,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPackage.LoadFileController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baseline.LoadPreviousListController">
     <children>
-        <Label fx:id="label" contentDisplay="BOTTOM" text="Enter the name of the file you want to load in below!">
+        <Label fx:id="label" contentDisplay="BOTTOM" text="Load Previous File">
             <padding>
                 <Insets left="110.0" top="40.0" />
             </padding>
             <font>
                 <Font size="25.0" />
             </font></Label>
-        <TextField id="filePath" fx:id="filePath" promptText="Enter the full path of the file here." scaleX="0.75">
+        <TextField id="filePath" fx:id="filePath" promptText="Enter the path of the file you wish to load:" scaleX="0.75">
             <VBox.margin>
                 <Insets top="50.0" />
             </VBox.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
         </TextField>
         <HBox prefHeight="100.0" prefWidth="200.0" spacing="300.0" translateY="75.0">
             <children>

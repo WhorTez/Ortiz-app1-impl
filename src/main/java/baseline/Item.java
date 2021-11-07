@@ -8,35 +8,47 @@ public class Item {
     String itemName;
     String description;
     String dueDate;
-    boolean complete = false;
+    String complete;
 
-    public String getItemName(){
+    public Item() {
+    }
+
+    public Item(String itemName, String description, String dueDate, String complete) {
+        this.itemName = itemName;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.complete = complete;
+    }
+
+    public String getItemName() {
         //will get the item name
-        return null;
+        return itemName;
     }
 
     public String getDescription() {
         //gets description of item from user
         //validates char length to be between 1 and 256
-        return null;
+        return description;
     }
 
     public String getDueDate() {
         //gets dueDate for item from user
         //make sure date is on Gregorian Calendar
         //validate input to be in YYYY-MM-DD format
-        return null;
+        return dueDate;
     }
 
-    public void editDescription(){
-        //takes a new description to replace the old one
-    }
-    public void editDate(){
-        //takes a new due date from the user and replaces the old one
+    public String getComplete() {
+        return complete;
     }
 
-    public void changesComplete(){
-        //will change completion from false to true or true to false when activated
+    public void editComplete(){
+        if(complete.equals("false")){
+            complete = "true";
+        }else if(complete.equals("true")){
+            complete = "false";
+        }
+        //will act as a checkbox in GUI
+        //check = true, no check = false
     }
-
 }

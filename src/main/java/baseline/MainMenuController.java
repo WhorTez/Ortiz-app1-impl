@@ -18,24 +18,24 @@ public class MainMenuController {
     @FXML
     public void changeToLoadPreviousListSceneOnButtonPress() throws IOException {
         Parent loadFileParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoadPreviousList.fxml")));
-        Scene loadFileScene = new Scene(loadFileParent);
+        Scene loadPrevListScene = new Scene(loadFileParent);
 
         Stage window = new Stage();
         window.setAlwaysOnTop(true);
         window.setTitle("Load List");
-        window.setScene(loadFileScene);
+        window.setScene(loadPrevListScene);
         window.show();
     }
 
     @FXML
     public void changeToCreateNewListSceneOnButtonPress() throws IOException {
         Parent loadFileParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateNewList.fxml")));
-        Scene loadFileScene = new Scene(loadFileParent);
+        Scene loadPrevListScene = new Scene(loadFileParent);
 
         Stage window = new Stage();
         window.setAlwaysOnTop(true);
         window.setTitle("Create New List");
-        window.setScene(loadFileScene);
+        window.setScene(loadPrevListScene);
         window.show();
     }
 

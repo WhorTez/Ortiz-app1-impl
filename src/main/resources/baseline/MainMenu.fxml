@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPackage.ToDoListGUIController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baseline.MainMenuController">
    <children>
       <Label contentDisplay="BOTTOM" text="What are we up to today Doc?">
          <padding>
@@ -60,9 +60,9 @@
             <Insets left="60.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" text="Add" />
+            <Button mnemonicParsing="false" onMouseClicked="#popupAddItemSceneOnButtonPress" text="Add" />
             <Button mnemonicParsing="false" onMouseClicked="#removeItemFromTable" text="Remove" />
-            <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" text="Edit" />
+            <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#popupEditItemSceneOnButtonPress" text="Edit" />
             <Button layoutX="650.0" layoutY="10.0" mnemonicParsing="false" text="Toggle Completion" />
             <Button layoutX="337.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clearAllItemsFromTable" text="Clear All" />
          </children>
