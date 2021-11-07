@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemManager {
+public class ListManager {
     List<ToDoListFunctions> manager = new ArrayList<>();
     String fileLocation;
     String file;

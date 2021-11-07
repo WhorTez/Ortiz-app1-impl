@@ -27,7 +27,7 @@ public class ToDoListApplication extends javafx.application.Application {
         launch(args);
     }
 
-    public ItemManager saveToDoLists () {
+    public ListManager saveToDoLists () {
         //creates an empty taskManager
         // will only add TDL's with fields set to true
         // will return the created taskManager so it can be saved
@@ -37,12 +37,12 @@ public class ToDoListApplication extends javafx.application.Application {
     }
 
 
-    public void writeToFile (ItemManager selectedLists){
+    public void writeToFile (ListManager selectedLists){
         //writes the manager created in function above and loops
         //its items(in this case toDoLists) and will print them in seperate lines
     }
 
-    public ItemManager loadingLists () {
+    public ListManager loadingLists () {
         //loads the file that contains a taskManager manager
         //reads the text file and populates a new manager
         //returns newly made manager
