@@ -7,25 +7,25 @@ package baseline;
 import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.util.List;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ListManager {
     ToDoListFunctions tdf = new ToDoListFunctions();
     String fileLocation;
-    File f = new File(getFileLocation() +"/"+ getFile());
+    File file = new File(getFileLocation() +"/"+ getFileName());
 
-    public void writeToFile(String f, ListManager manager){
+    public void writeToFile(String file, ListManager manager){
         try{
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter(f))){
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
                 bw.write(manager.tdf.title +"\n");
                 bw.write(manager.tdf.itemList.size() +"\n");
                 for(int i =0;i<manager.tdf.itemList.size();i++){
-                    bw.write(manager.tdf.itemList.get(i).itemName +"\n");
+                    bw.write(manager.tdf.itemList.get(i).name +"\n");
                     bw.write(manager.tdf.itemList.get(i).description +"\n");
                     bw.write(manager.tdf.itemList.get(i).dueDate +"\n");
 
-                    if(manager.tdf.itemList.get(i).complete.equals("true")){
+                    if(manager.tdf.itemList.get(i).complete.equals("yes")){
                         bw.write("complete" +"\n");
                     }else{
                         bw.write("incomplete" +"\n");
@@ -41,42 +41,35 @@ public class ListManager {
         //Get Supplies      pens, backpack, notebooks   Due: 11/15/2021 incomplete
     }
 
-    public ListManager loadList(String location){
-        ListManager loadedList = new ListManager();
-        File f = new File(location);
+    public ListManager loadToDoList(String location){
+        ListManager load = new ListManager();
+        file = new File(location);
 
         try{
-            try(Scanner in = new Scanner(f)){
-                loadedList.tdf.title = in.nextLine();
+            try(Scanner in = new Scanner(file)){
+                load.tdf.title = in.nextLine();
 
                 String listSize = in.nextLine();
                 for(int i=0;i<Integer.parseInt(listSize);i++){
                     Item item = new Item();
-                    item.itemName = in.nextLine();
+                    item.name = in.nextLine();
                     item.description = in.nextLine();
                     item.dueDate = in.nextLine();
 
                     String completion = in.nextLine();
 
                     if(completion.equals("complete")){
-                        item.complete = "true";
+                        item.complete = "yes";
                     }else if(completion.equals("incomplete")){
-                        item.complete = "false";
+                        item.complete = "no";
                     }
-                    loadedList.tdf.itemList.add(item);
+                    load.tdf.itemList.add(item);
                 }
             }
-        }catch (Exception e){
+        }catch (FileNotFoundException e){
             e.printStackTrace();
         }
-        return loadedList;
-    }
-
-    public String createNewList(String title){
-       tdf.title = title;
-       System.out.println("Name for your new List: " +tdf.title);
-        //gets title
-        return title;
+        return load;
     }
 
     public String getFileLocation() {
@@ -84,7 +77,7 @@ public class ListManager {
         return fileLocation;
     }
 
-    public String getFile() {
+    public String getFileName() {
         //returns file name provided by user
         return tdf.title;
     }

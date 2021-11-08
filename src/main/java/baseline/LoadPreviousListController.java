@@ -5,32 +5,43 @@
 package baseline;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.io.IOException;
 
 public class LoadPreviousListController {
     ListManager lm = new ListManager();
-    @FXML
-    private Button confirmButton;
-    @FXML
-    private Button goBackButton;
+
     @FXML
     private TextField filePath;
     @FXML
     private Label label;
 
     @FXML
-    public String getFilePath(MouseEvent event){
+    public void getFilePath(MouseEvent event) throws IOException {
         if(!filePath.getText().equals("")) {
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            Parent root = loader.load();
+            MainMenuController controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+            controller.lm = lm.loadToDoList(filePath.getText());
+            controller.loadTable(lm.loadToDoList(filePath.getText()));
+
+            stage.show();
+
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.close();
-        }else{
+        } else {
             label.setText("Enter a valid file path");
         }
-        lm.load
     }
 }

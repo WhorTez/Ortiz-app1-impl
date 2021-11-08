@@ -6,29 +6,103 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoListFunctionsTest {
 
+
     @Test
-    void deleteItem() {
-        //ensure that an item is deleted in a list
+    void clearAll() {
+        Item firstItem = new Item();
+        firstItem.name = "maintenance";
+        firstItem.complete = "false";
+        firstItem.dueDate = "";
+        firstItem.description = "oil change";
+
+        Item secondItem = new Item();
+        secondItem.name = "maintenance";
+        secondItem.complete = "false";
+        secondItem.dueDate = "";
+        secondItem.description = "oil change";
+
+        ToDoListFunctions test = new ToDoListFunctions();
+        test.itemList.add(firstItem);
+        test.itemList.add(secondItem);
+
+        ToDoListFunctions empty = new ToDoListFunctions();
+
+        test.itemList = test.clearAll();
+
+        assertEquals(empty.itemList.size(), test.itemList.size());
+
     }
 
     @Test
     void addItem() {
-        //ensures that an item is added to a list
-    }
+        Item firstItem = new Item();
+        firstItem.name = "maintenance";
+        firstItem.complete = "false";
+        firstItem.dueDate = "";
+        firstItem.description = "oil change";
 
-    @Test
-    void displayAllLists() {
-        //ensure that all items in the list are shown
+        ToDoListFunctions test = new ToDoListFunctions();
+        test.addItem(firstItem);
+
+        ToDoListFunctions expected = new ToDoListFunctions();
+        expected.itemList.add(firstItem);
+
+        assertEquals(expected.itemList.get(0), test.itemList.get(0));
     }
 
     @Test
     void displayCompletedTasks() {
-        //ensure only items that are checked off as complete are shown
+        ToDoListFunctions empty = new ToDoListFunctions();
+
+        Item firstItem = new Item();
+        firstItem.name = "maintenance";
+        firstItem.complete = "no";
+        firstItem.dueDate = "";
+        firstItem.description = "oil change";
+
+        Item secondItem = new Item();
+        secondItem.name = "test";
+        secondItem.complete = "yes";
+        secondItem.dueDate = "2021-12-02";
+        secondItem.description = "oil change";
+
+        ToDoListFunctions test = new ToDoListFunctions();
+        test.itemList.add(firstItem);
+        test.itemList.add(secondItem);
+
+        ToDoListFunctions expected = new ToDoListFunctions();
+        expected.itemList.add(secondItem);
+
+        test.displayCompletedTasks(empty.itemList);
+
+        assertEquals(expected.itemList, empty.itemList);
     }
 
     @Test
     void displayIncompleteTasks() {
-        //ensure only items that havent been checked off are shown
-    }
+        ToDoListFunctions empty = new ToDoListFunctions();
 
+        Item firstItem = new Item();
+        firstItem.name = "maintenance";
+        firstItem.complete = "no";
+        firstItem.dueDate = "";
+        firstItem.description = "oil change";
+
+        Item secondItem = new Item();
+        secondItem.name = "test";
+        secondItem.complete = "yes";
+        secondItem.dueDate = "2021-12-02";
+        secondItem.description = "oil change";
+
+        ToDoListFunctions test = new ToDoListFunctions();
+        test.itemList.add(firstItem);
+        test.itemList.add(secondItem);
+
+        ToDoListFunctions expected = new ToDoListFunctions();
+        expected.itemList.add(firstItem);
+
+        test.displayIncompleteTasks(empty.itemList);
+
+        assertEquals(expected.itemList, empty.itemList);
+    }
 }

@@ -5,7 +5,7 @@
 package baseline;
 
 public class Item {
-    String itemName;
+    String name;
     String description;
     String dueDate;
     String complete;
@@ -13,16 +13,16 @@ public class Item {
     public Item() {
     }
 
-    public Item(String itemName, String description, String dueDate, String complete) {
-        this.itemName = itemName;
+    public Item(String itemName, String description, String dueDate, String completion) {
+        this.name = itemName;
         this.description = description;
         this.dueDate = dueDate;
-        this.complete = complete;
+        this.complete = completion;
     }
 
-    public String getItemName() {
+    public String getName() {
         //will get the item name
-        return itemName;
+        return name;
     }
 
     public String getDescription() {
@@ -42,13 +42,11 @@ public class Item {
         return complete;
     }
 
-    public void editComplete(){
-        if(complete.equals("false")){
+    public void ChangeComplete() {
+        if (complete.equals("false")) {
             complete = "true";
-        }else if(complete.equals("true")){
-            complete = "false";
-        }
-        //will act as a checkbox in GUI
-        //check = true, no check = false
+        } else if(complete.equals("true")) {
+        complete = "false";
+    }
     }
 }
